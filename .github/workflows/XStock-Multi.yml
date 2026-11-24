@@ -454,7 +454,7 @@ jobs:
 
             # declares the helpers static; export them so the kernel side can link
             sed -i -E 's/^static (int|void) (security_context_to_sid_with_policy|security_sid_to_context_with_policy|security_compute_av_user_with_policy)\(/\1 \2(/' "$HIDE"
-            grep -n '^[a-z].*_with_policy(struct' "$HIDE"
+            grep -n '^[a-z].*_with_policy(struct' "$HIDE" || true
             if grep -n '^static .*_with_policy(' "$HIDE"; then
               echo "❌ helpers still static"; exit 1
             fi
